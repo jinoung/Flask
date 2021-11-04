@@ -1,0 +1,263 @@
+/* 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+caption{
+    display: none;
+}
+
+html {
+    font-size: 10px;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.board_wrap {
+    width: 1000px;
+    margin: 100px auto;
+}
+
+/* 타이트 영역 */
+
+.board_title {
+    margin-bottom: 30px;
+}
+.board_title strong {
+    font-size: 3rem;
+}
+.board_title p {
+    margin-top: 5px;
+    font-size: 1.4rem;
+}
+
+/* 목록 페이지 (list.html) */
+
+.board_list{
+    width: 100%;
+    border-top: 2px solid green;
+}
+
+.board_list tr{
+    border-bottom: 1px solid #ccc;
+}
+
+.board_list th,
+.board_list td{
+    padding: 10px;
+    font-size: 14px;
+}
+
+.board_list {
+    text-align: center;
+}
+
+.board_list .tit {
+    text-align: left;
+}
+
+.board_list .tit:hover {
+    text-decoration: underline;
+}
+
+.board_list_wrap .board_page {
+    margin-top: 10px;
+    font-size: 0;
+    text-align: center;
+}
+
+.board_list_wrap .board_page a {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 5px 10px;
+    
+    border-radius: 27px;
+    font-size: 12px;
+}
+
+.board_list_wrap .board_page a:first-child {
+    margin-left: 0;
+}
+
+.board_list_wrap .board_page a.bt {
+    border: 1px solid #eee;
+    background-color: #eee;
+}    
+
+.board_list_wrap .board_page a.num {
+    border: 1px solid green;
+    font-weight: 600;
+    color: green;
+}    
+
+.board_list_wrap .paging a.num.on {
+    background-color: green;
+    color: #fff;
+}    
+
+/* 보기 페이지 (view.html) */
+.board_view {
+    width: 100%;
+    border-top: 2px solid #000;
+}
+
+.board_view .title {
+    padding: 20px, 15px;
+    border-bottom: 1px dashed #ddd;
+    font-size: 2rem;
+}
+
+.board_view .info {
+    padding: 15px;
+    border-bottom: 1px solid #999;
+    font-size: 0;
+}
+
+.board_view .info dl {
+    position: relative;
+    display: inline-block;
+    padding:  0 20px;
+}
+
+.board_view .info dl:first-child {
+    padding-left: 0;
+}
+
+.board_view .info dl::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 1px;
+    left: 0;
+    width: 1px;
+    height: 13px;
+    background: #ddd;
+}
+
+.board_view .cont {
+    padding: 15px;
+    border-bottom: 1px solid #000;
+    line-height: 160%;
+    font-size: 1.4rem;
+}
+
+.board_view .info dl:first-child:before {
+    display: none;
+}    
+.board_view .info dl dt,
+.board_view .info dl dd {
+    display: inline-block;
+    font-size: 1.4rem;
+}
+
+.board_view .info dl dd {
+    margin-left: 10px;
+    color: #777
+}
+
+/* 글쓰기 및 수정 페이지 (write.html, edit.html) */
+.board_write {
+    border-top: 2px solid #000;
+}
+
+.board_write .title,
+.board_write .info {
+    padding: 15px;
+}
+
+.board_write .info {
+    border-top: 1px dashed #ddd;
+    border-bottom: 1px solid #000;
+    font-size: 0;
+}
+
+.board_write .info dl {
+    display: inline-block;
+    width: 50%;
+    vertical-align: middle;
+}
+
+.board_write .title dt,
+.board_write .title dd,
+.board_write .info dt,
+.board_write .info dd {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.4rem;
+}
+
+.board_write .title dl {
+    font-size: 0;
+}
+
+.board_write .title dt,
+.board_write .info dt {
+    width: 100px
+}
+
+.board_write .title dd {
+    width: calc(100% - 100px);
+}
+
+.board_write .title input[type="text"],
+.board_write .info input[type="text"],
+.board_write .info input[type="password"] {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.board_write .title input[type="text"] {
+    width: 80%;
+}
+
+.board_write .cont {
+    border-bottom: 1px solid #000;
+}
+
+.board_write .cont textarea {
+    display: block;
+    width: 100%;
+    height: 300px;
+    padding: 15px;
+    box-sizing: border-box;
+    border: 0;
+    resize: vertical;
+}
+
+/* 버튼 영역 */
+
+.bt_wrap {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0;
+}
+.bt_wrap a {
+    display: inline-block;
+    min-width: 80px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    font-size: 1.4rem;
+}
+
+.bt_wrap a:first-child {
+    margin-left: 0;
+}
+
+.bt_wrap a.on {
+    background: #000;
+    color: #fff;
+}
