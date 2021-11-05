@@ -30,7 +30,7 @@ a {
     margin: 100px auto;
 }
 
-/* 타이트 영역 */
+/* 타이틀 영역 */
 
 .board_title {
     margin-bottom: 30px;
@@ -102,7 +102,7 @@ a {
     color: green;
 }    
 
-.board_list_wrap .paging a.num.on {
+.board_list_wrap .board_page a.num.on {
     background-color: green;
     color: #fff;
 }    
