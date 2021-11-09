@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <title>게시판목록</title>
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  </head>
+
+  <body>
+    <div>
+      <div class="board_title">
+        <strong>공지사항</strong>
+        <p>공지사항을 꼭 확인해 주세요.</p>
+      </div>
+
+      <div class="container">
+        <h1 class="my-3 border-bottom pb-2">공지수정</h1>
+        <form method="post" class="post-form my-3">
+          {{ form.csrf_token }}
+            <!-- 오류표시 Start -->
+            {% for field, errors in form.errors.items() %}
+              <div class="alert alert-danger" role="alert">
+                <strong>{{ form[field].label }}</strong>: {{ ', '.join(errors) }}
+              </div>
+            {% endfor %}
+            <!--오류표시 End -->
+            {{ form.subject.label }}
+            {{ form.subject() }}
+    
+            {{ form.content.label }}
+            {{ form.content() }}
+    
+            <button type="submit" class="btn btn-primary">저장하기</button>
+        </form>
+    </div>
+    </div>
+  </body>
+</html>
