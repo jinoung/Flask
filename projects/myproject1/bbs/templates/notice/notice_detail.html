@@ -1,58 +1,20 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <title>게시판목록</title>
-
-    <!-- stylesheet -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-  </head>
-
-  <body>
-    
-    <div>
-        <div class="board_title">
-          <strong>공지사항</strong>
-          <p>공지사항을 꼭 확인해 주세요.</p>
-        </div>
-
-        <div class="board_detail_wrap">
-            <div class="board_detail">
-                <div class="title">
-                    {{ data.subject }}
-                </div>
-                <div class="info">
-                    <dl>
-                        <dt>번호</dt>
-                        <dd>{{ data.id }}</dd>
-                    </dl>
-                    <dl>
-                        <dt>글쓴이</dt>
-                        <dd>관리자</dd>
-                    </dl>
-                    <dl>
-                        <dt>작성일</dt>
-                        <dd>{{ data.create_date }}</dd>
-                    </dl>
-                    <dl>
-                        <dt>조회</dt>
-                        <dd>112</dd>
-                    </dl>
-                </div>
-                <div class="cont">
-                    {{ data.content }}
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-3">
+    <h2 class="border-bottom py-2">{{ data.subject }}</h2>
+    <div class="card my-3">
+        <div class="card-body">
+            <div class="card-text" style="white-space: pre-line;">{{ data.content }}</div>
+            <div class="d-flex justify-content-end">
+                <div class="badge badge-light p-2">
+                    {{ data.create_date|datetime }}
                 </div>
             </div>
-        
-            <div class="bt_wrap">
-                <a href="{{ url_for('notice._list') }}" class="on">목록</a>
-                <a href="{{ url_for('notice.update', notice_id=data.id) }}">수정</a> 
-            </div>
         </div>
-    
-      </div> <!-- borad_wrap-->
-  </body>  
-
-</body>
-</html>
+    </div>
+</div>
+<div class="bt_wrap">
+  <a href="{{ url_for('notice._list') }}" class="on">목록</a>
+  <a href="{{ url_for('notice.update', notice_id=data.id) }}">수정</a> 
+</div>
+{% endblock %}

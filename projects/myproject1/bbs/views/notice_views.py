@@ -10,7 +10,9 @@ bp = Blueprint('notice', __name__, url_prefix='/notice')
 
 @bp.route('/list/')
 def _list():
+    page = request.args.get('page', type=int, default=1)
     notice = Notice.query.order_by(Notice.create_date.desc())
+    notice = notice.paginate(page, per_page=20)
     return render_template('notice/notice_list.html', data=notice)
 
 @bp.route('/detail/<int:notice_id>/')

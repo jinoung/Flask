@@ -1,7 +1,7 @@
 /* 초기화 */
 * {
-    margin: 0;
-    padding: 0;
+    margin: 3px;
+    padding: 3px;
 }
 
 table{
@@ -13,7 +13,7 @@ caption{
 }
 
 html {
-    font-size: 10px;
+    font-size: 12px;
 }
 
 ul, li {
@@ -23,149 +23,6 @@ ul, li {
 a {
     text-decoration: none;
     color: inherit;
-}
-
-
-/* 타이틀 영역 */
-
-.board_title {
-    margin-bottom: 30px;
-}
-.board_title strong {
-    font-size: 3rem;
-}
-.board_title p {
-    margin-top: 5px;
-    font-size: 1.4rem;
-}
-
-/* 목록 페이지 (notice_list.html) */
-
-.board_list{
-    width: 100%;
-    border-top: 2px solid green;
-}
-
-.board_list tr{
-    border-bottom: 1px solid #ccc;
-}
-
-.board_list th,
-.board_list td{
-    padding: 10px;
-    font-size: 14px;
-}
-
-.board_list {
-    text-align: center;
-}
-
-.board_list .tit {
-    text-align: left;
-}
-
-.board_list .tit:hover {
-    text-decoration: underline;
-}
-
-.board_page {
-    margin-top: 10px;
-    font-size: 0;
-    text-align: center;
-}
-
-.board_page a {
-    display: inline-block;
-    margin-left: 10px;
-    padding: 5px 10px;
-    
-    border-radius: 27px;
-    font-size: 12px;
-}
-
-.board_page a:first-child {
-    margin-left: 0;
-}
-
-.board_page a.bt {
-    border: 1px solid #eee;
-    background-color: #eee;
-}    
-
-.board_page a.num {
-    border: 1px solid green;
-    font-weight: 600;
-    color: green;
-}    
-
-.board_page a.num.on {
-    background-color: green;
-    color: #fff;
-}    
-
-/* 상세 페이지 (notice_detail.html) */
-.board_detail {
-    width: 100%;
-    border-top: 2px solid #000;
-}
-
-.board_detail .title {
-    padding: 20px, 15px;
-    border-bottom: 1px dashed #ddd;
-    font-size: 2rem;
-}
-
-.board_detail .info {
-    padding: 15px;
-    border-bottom: 1px solid #999;
-    font-size: 0;
-}
-
-.board_detail .info dl {
-    position: relative;
-    display: inline-block;
-    padding:  0 20px;
-}
-
-.board_detail .info dl:first-child {
-    padding-left: 0;
-}
-
-.board_detail .info dl::before {
-    content: "";
-    position: absolute;
-    display: block;
-    top: 1px;
-    left: 0;
-    width: 1px;
-    height: 13px;
-    background: #ddd;
-}
-
-.board_detail .cont {
-    padding: 15px;
-    border-bottom: 1px solid #000;
-    line-height: 160%;
-    font-size: 1.4rem;
-}
-
-.board_detail .info dl:first-child:before {
-    display: none;
-}    
-.board_detail .info dl dt,
-.board_detail .info dl dd {
-    display: inline-block;
-    font-size: 1.4rem;
-}
-
-.board_detail .info dl dd {
-    margin-left: 10px;
-    color: #777
-}
-
-/* 글쓰기 및 수정 페이지 (notice_create.html, notice_update.html) */
-.title {
-    padding: 15px;
 }
 
 /* 버튼 영역 */

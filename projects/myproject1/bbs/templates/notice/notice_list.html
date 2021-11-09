@@ -1,68 +1,77 @@
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="utf-8">
-    <title>게시판목록</title>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-3">
+  <table class="table">
+    <caption>게시판 목록</caption>
+    <thead>
+      <tr class="thead-dark">
+        <th>번호</th>
+        <th>제목</th>
+        <th>글쓴이</th>
+        <th>작성일</th>
+        <th>조회</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if data %}
+        {% for d in data.items %}
+          <tr>
+            <td>{{ d.id }}</td>
+            <td class="tit"><a href="{{ url_for('notice.detail', notice_id=d.id) }}">{{ d.subject}}</a></td>
+            <td>관리자</td>
+            <td>{{ d.create_date|datetime }}</td>
+            <td>111</td>
+          </tr>
+        {% endfor %}
+      {% else %}
+      <p>공지가 없습니다.</p>
+      {% endif %}
+    </tbody>
+  </table>
+  <!-- 페이징처리 시작 -->
+  <ul class="pagination justify-content-center">
+    <!-- 이전페이지 -->
+    {% if data.has_prev %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ data.prev_num }}">이전</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+      <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+    </li>
+    {% endif %}
+    
+    <!-- 페이지 -->
+    {% for page_num in data.iter_pages() %}
+        {% if page_num %}
+            {% if page_num != data.page %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+            </li>
+            {% else %}
+            <li class="page-item active" aria-current="page">
+                <a class="page-link" href="#">{{ page_num }}</a>
+            </li>
+            {% endif %}
+       {% else %}
+            <li class="disabled">
+                <a class="page-link" href="#">...</a>
+            </li>
+       {% endif %}
+    {% endfor %}
 
-    <!-- stylesheet -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-  </head>
-
-  <body>
-    <div class="borad_wrap">
-      <div class="board_title">
-        <strong>공지사항</strong>
-        <p>공지사항을 꼭 확인해 주세요.</p>
-      </div>
-
-      <div class="container my-3">
-          
-          <table class="table">
-            <caption>게시판 목록</caption>
-            <thead>
-              <tr class="thead-dark">
-                <th>번호</th>
-                <th>제목</th>
-                <th>글쓴이</th>
-                <th>작성일</th>
-                <th>조회</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% if data %}
-                {% for d in data %}
-                  <tr>
-                    <td>{{ d.id }}</td>
-                    <td class="tit"><a href="{{ url_for('notice.detail', notice_id=d.id) }}">{{ d.subject}}</a></td>
-                    <td>관리자</td>
-                    <td>{{ d.create_date }}</td>
-                    <td>111</td>
-                  </tr>
-                {% endfor %}
-              {% else %}
-              <p>공지가 없습니다.</p>
-              {% endif %}
-            </tbody>
-          </table>
-      </div>    
-      <div class="board_page">
-        <a href="#" class="bt">첫 페이지</a>
-        <a href="#" class="bt">이전 페이지</a>
-        <a href="#" class="num on">1</a>
-        <a href="#" class="num">2</a>
-        <a href="#" class="num">3</a>
-        <a href="#" class="num">4</a>
-        <a href="#" class="num">5</a>
-        <a href="#" class="num">6</a>
-        <a href="#" class="num">7</a>
-        <a href="#" class="bt">다음 페이지로 이동</a>
-        <a href="#" class="bt">마지막 페이지</a>
-      </div>
-      <div class="bt_wrap">
-        <a href="{{ url_for('notice.create') }}" class="on">글쓰기</a>
-        <!-- <a href="#">수정</a> -->
-      </div>
-    </div> <!-- borad_wrap-->
-  </body>
-</html>
+    <!-- 다음페이지 -->
+    {% if data.has_next %}
+    <li class="page-item">
+        <a class="page-link" href="?page={{ data.next_num }}">다음</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+        <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+    </li>
+    {% endif %}
+  </ul>
+  <!-- 페이징처리 끝 -->
+  <a href="{{ url_for('notice.create') }}" class="btn btn-primary">글쓰기</a>
+</div>    
+{% endblock %}
