@@ -4,17 +4,35 @@
     <h2 class="border-bottom py-2">{{ data.subject }}</h2>
     <div class="card my-3">
         <div class="card-body">
-            <div class="card-text" style="white-space: pre-line;">{{ data.content }}</div>
+            <div class="card-text">{{ data.content|markdown }}</div>
             <div class="d-flex justify-content-end">
-                <div class="badge badge-light p-2">
-                    {{ data.create_date|datetime }}
+                {% if data.edit_date %}
+                <div class="badge badge-light p-2 text-left mx-3">
+                    <div class="mb-2">edited at</div>
+                    <div>{{ data.edit_date|datetime }}</div>
+                </div>
+                {% endif %}
+                <div class="badge badge-light p-2 text-left">
+                    <div class="mb-2">{{ data.user.username }}</div>
+                    <div>{{ data.create_date|datetime }}</div>
                 </div>
             </div>
         </div>
     </div>
+    {% if g.user == data.user %}
+    <a href="{{ url_for('notice.update', notice_id=data.id) }}" class="btn btn-success">수정</a> 
+    <a href="{{ url_for('notice.delete', notice_id=data.id) }}" class="delete btn btn-success">삭제</a> 
+    {% endif %}
 </div>
-<div class="bt_wrap">
-  <a href="{{ url_for('notice._list') }}" class="on">목록</a>
-  <a href="{{ url_for('notice.update', notice_id=data.id) }}">수정</a> 
-</div>
+{% endblock %}
+{% block script %}
+<script type='text/javascript'>
+$(document).ready(function(){
+    $(".delete").on('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = $(this).data('uri');
+        }
+    });
+});
+</script>
 {% endblock %}

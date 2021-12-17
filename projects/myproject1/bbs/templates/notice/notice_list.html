@@ -2,7 +2,6 @@
 {% block content %}
 <div class="container my-3">
   <table class="table">
-    <caption>게시판 목록</caption>
     <thead>
       <tr class="thead-dark">
         <th>번호</th>
@@ -16,9 +15,9 @@
       {% if data %}
         {% for d in data.items %}
           <tr>
-            <td>{{ d.id }}</td>
+            <td>{{ data.total - ((data.page-1)*data.per_page) - loop.index0 }}</td>
             <td class="tit"><a href="{{ url_for('notice.detail', notice_id=d.id) }}">{{ d.subject}}</a></td>
-            <td>관리자</td>
+            <td>{{ d.user.username }}</td>
             <td>{{ d.create_date|datetime }}</td>
             <td>111</td>
           </tr>
@@ -72,6 +71,6 @@
     {% endif %}
   </ul>
   <!-- 페이징처리 끝 -->
-  <a href="{{ url_for('notice.create') }}" class="btn btn-primary">글쓰기</a>
+  <a href="{{ url_for('notice.create') }}" class="btn btn-success">글쓰기</a>
 </div>    
 {% endblock %}

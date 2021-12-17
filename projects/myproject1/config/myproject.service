@@ -1,0 +1,15 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/projects/myproject
+EnvironmentFile=/home/ubuntu/venvs/myproject.env
+ExecStart=/home/ubuntu/venvs/myproject/bin/gunicorn \
+          --workers 2 \
+          --bind unix:/tmp/myproject.sock \
+          "bbs:create_app()"
+[Install]
+WantedBy=multi-user.target

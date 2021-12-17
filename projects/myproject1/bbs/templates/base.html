@@ -8,16 +8,21 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <!-- BBS CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <title>Hello, JINOUNG!</title>
+    {{ simplemde.css }}
+    {{ simplemde.js }}
+    <title>MY DIARY</title>
 </head>
 <body>
 {% include "navbar.html" %}
-<!-- 기본 템플릿 안에 삽입될 내용 Start -->
 {% block content %}
 {% endblock %}
-<!-- 기본 템플릿 안에 삽입될 내용 End -->
+<!-- JQuery JS -->
+<script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
 <!-- Bootstrap JS -->
 <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-<script src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+<!-- MathJax JS -->
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% block script %}
+{% endblock %}
 </body>
 </html>
