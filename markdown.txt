@@ -1,0 +1,8 @@
+마크다운 문법으로 작성해 봅니다.
+
+리스트1
+리스트2
+리스트3
+파이썬 홈페이지는 http://www.python.org 입니다. class User(db.Model): id = db.Column(db.Integer, primary_key=True) username = db.Column(db.String(150), unique=True, nullable=False) password = db.Column(db.String(200), nullable=False) email = db.Column(db.String(120), unique=True, nullable=False)
+
+굵게 * 리스트1 * 리스트2 * 리스트3 파이썬 홈페이지는 http://www.python.org 입니다. long_text = 'Life is too short, you need python. ' * 10 result = textwrap.wrap(long_text, width=70) print('\n'.join(result)) class User(db.Model): id = db.Column(db.Integer, primary_key=True) username = db.Column(db.String(150), unique=True, nullable=False) password = db.Column(db.String(200), nullable=False) email = db.Column(db.String(120), unique=True, nullable=False)
